@@ -8,7 +8,7 @@ docker ps -aq
 docker image build -t cdwuk/python-django:v1.0.0 .
 
 # run the local image
-docker container run --name python_django -it --rm  cdwuk/python-django:v1.0.0
+docker container run --name python_django -it --rm  -p 80:80 cdwuk/python-django:v1.0.0
 
 docker ps
 

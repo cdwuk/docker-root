@@ -1,16 +1,21 @@
 
 # create the local image
-docker build -t cdwuk/php-app .
+docker image build -t cdwuk/php-app:v1.0.0 .
 
 # run the local image
-docker run -it --rm  --name my-running-app cdwuk/php-app
+docker run -it --rm  --name php-app -p 5002:80 cdwuk/php-app
 
 docker ps
 
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/python-standard:v1.0.0
+curl localhost:5002
+
+# run in browser
+http://localhost:5002
+
+docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/cdwuk/php-app:v1.0.0
 
 #login to docker hub
 docker login --username cdwuk
 
 # push the image to docker hub
-docker push cdwuk/php-app
+docker push cdwuk/cdwuk/php-app:v1.0.0

@@ -3,11 +3,17 @@
 docker image build -t cdwuk/python-basic:v1.0.0 .
 
 # run the local image
-docker container run --rm -i -t cdwuk/python-basic:v1.0.0
+docker container run --name python_basic --rm -i -t cdwuk/python-basic:v1.0.0
 
-docker ps
+# show all containers running or not
+docker ps -a
+
+## show logs for this container
+docker logs -f python_basic 
 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/python-basic:v1.0.0
+
+docker stop python_basic 
 
 #login to docker hub
 docker login --username cdwuk

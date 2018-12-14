@@ -3,7 +3,9 @@
 docker image build -t cdwuk/python-standard:v1.0.0 .
 
 # run the local image
-docker container run --rm -i -t cdwuk/python-standard:v1.0.0
+docker container run --name python-standard --rm -i -t -p 5001:5000 cdwuk/python-standard:v1.0.0
+
+curl localhost:5001
 
 docker ps
 

@@ -2,13 +2,15 @@ apiVersion: apps/v1
 kind: Service
 apiVersion: v1
 metadata:
-  name: web
+  name: python-standard-service1
   namespace: default
 spec:
   selector:
-    app: web
+    app: python-standard1
+    type: front-end
   ports:
     - port: 80
       targetPort: 5000
-  type: LoadBalancer
+      nodePort: 30001
+  type: NodePort
         

@@ -3,12 +3,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>My PHP Website</title>
+  <title>PHP Website</title>
 </head>
 
 <body>
-  <h1>My PHP Website</h1>
-  <p>Here is some static content.</p>
-  <p><?php echo "Here is some dynamic content"; ?></p>
+  <h1>
+  <?php echo "PHP website running in docker Container for CDW"; ?>
+  </h1>
+
+  <img src="images/cdw.png" />
+
+  <img src="images/php.png" />
+
 </body>
 </html>

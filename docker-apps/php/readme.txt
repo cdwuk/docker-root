@@ -3,11 +3,7 @@
 docker image build -t cdwuk/php-app:v1.0.0 .
 
 # run the local image
-docker run -it --rm  --name php-app -p 5002:80 cdwuk/php-app
-
-docker run --rm -p 8000:80 php:apache
-
-php:apache
+docker run -it --rm  --name php-app -p 5002:80 cdwuk/php-app:v1.0.0
 
 docker ps
 
@@ -22,4 +18,4 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/cdwuk/ph
 docker login --username cdwuk
 
 # push the image to docker hub
-docker push cdwuk/cdwuk/php-app:v1.0.0
+docker push cdwuk/php-app:v1.0.0

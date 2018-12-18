@@ -1,5 +1,5 @@
-FROM php:7.2-cli
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
+FROM php:apache
+COPY . /var/www/html
+WORKDIR /var/www/html
 EXPOSE 80
-CMD [ "php", "./script.php" ]
+CMD [ "php", "./index.php" ]

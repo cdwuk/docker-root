@@ -1,7 +1,10 @@
+# prepare to build image
+cd <this directory that contains Dockerfile>
 
-# create the local image
+# create the local copy of image
 docker image build -t cdwuk/python-basic .
 
+# add additional tags to the same image
 $ docker build -t cdwuk/python-basic:v1.0.0 -t cdwuk/python-basic:latest .
 
 # run the local image

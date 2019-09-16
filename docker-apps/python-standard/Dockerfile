@@ -1,12 +1,8 @@
 FROM python:3.6
-
-RUN mkdir /code
-WORKDIR /code
-ADD . /code/
+RUN mkdir /app
+WORKDIR /app
+ADD . /app/
 RUN pip install -r requirements.txt
-EXPOSE 5000
-CMD ["python", "app.py", "-p 5000"]
-
-#EXPOSE 80
-#CMD ["python", "app.py", "-p 80"]
+RUN pip install --upgrade pip
+CMD ["python", "app.py", "-p 80"]
  

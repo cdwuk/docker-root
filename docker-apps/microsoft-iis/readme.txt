@@ -1,3 +1,4 @@
+# Important!... requires Docker VM to be running Windows
 
 # create the local image
 docker image build -t cdwuk/iis:v1.0.0 .

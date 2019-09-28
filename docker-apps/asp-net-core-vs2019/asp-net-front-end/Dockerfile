@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["asp-net-front-end/asp-net-front-end.csproj", "asp-net-front-end/"]
+COPY ["asp-net-front-end.csproj", "asp-net-front-end/"]
 RUN dotnet restore "asp-net-front-end/asp-net-front-end.csproj"
 COPY . .
 WORKDIR "/src/asp-net-front-end"

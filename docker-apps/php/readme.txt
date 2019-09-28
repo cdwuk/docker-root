@@ -3,10 +3,10 @@
 docker image build -t cdwuk/php-app:v1.0.0 .
 
 # add additional tags to the same image
-docker build -t cdwuk/php-app -t cdwuk/php-app:v1.0.0 -t cdwuk/php-app:latest .
+docker build -t cdwuk/php-app -t cdwuk/php-app:liverpool -t cdwuk/php-app:latest .
 
 # run the local image
-docker run -it --rm  --name php-app -p 5002:80 cdwuk/php-app:v1.0.0
+docker run -it --rm  --name php-app -p 5002:80 cdwuk/php-app:liverpool
 
 docker ps
 

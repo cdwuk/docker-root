@@ -13,7 +13,9 @@ http://localhost:5001
 
 docker ps
 
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/python-standard:v1.0.0docker in
+docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/python-standard:v1.0.0docker
+
+docker stop python-standard
 
 # Delete all containers
 docker rm $(docker ps -a -q)

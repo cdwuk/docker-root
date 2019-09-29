@@ -1,7 +1,9 @@
 
 docker image build -t cdwuk/aspnetapp:v3 .
 
-docker run -it --rm -p 5012:80 --name aspnetapp cdwuk/aspnetapp:v3
+docker run -it --rm -p 5014:80 --name aspnetapp cdwuk/aspnetapp:v3
+
+docker stop aspnetapp
 
 docker ps
 
@@ -16,4 +18,3 @@ docker login --username cdwuk
 # push the image to docker hub
 docker push cdwuk/aspnetapp:v3
 
-docker push cdwuk/aspnetapp:v3

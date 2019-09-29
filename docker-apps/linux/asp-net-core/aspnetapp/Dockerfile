@@ -1,18 +1,19 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
 WORKDIR /app
+EXPOSE 80
 
-# copy csproj and restore as distinct layers
-COPY *.sln .
-COPY aspnetapp/*.csproj ./aspnetapp/
-RUN dotnet restore
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+WORKDIR /src
+COPY ["aspnetapp/aspnetapp.csproj", "aspnetapp/"]
+RUN dotnet restore "aspnetapp/aspnetapp.csproj"
+COPY . .
+WORKDIR "/src/aspnetapp"
+RUN dotnet build "aspnetapp.csproj" -c Release -o /app/build
 
-# copy everything else and build app
-COPY aspnetapp/. ./aspnetapp/
-WORKDIR /app/aspnetapp
-RUN dotnet publish -c Release -o out
+FROM build AS publish
+RUN dotnet publish "aspnetapp.csproj" -c Release -o /app/publish
 
-
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+FROM base AS final
 WORKDIR /app
-COPY --from=build /app/aspnetapp/out ./
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]

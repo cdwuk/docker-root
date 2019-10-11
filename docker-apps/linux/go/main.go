@@ -18,7 +18,7 @@ func main() {
 	port := getEnv("PORT", "8080")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "This is a Go app. </ iframe height='600' width='800' src='https://www.whufc.com/' >")
+		fmt.Fprintf(w, "This is a Go executable listening on port 8080 returning this text.")
 	})
 
 	http.ListenAndServe(":"+port, nil)

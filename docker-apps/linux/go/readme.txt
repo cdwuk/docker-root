@@ -2,13 +2,13 @@
 docker image build -t cdwuk/go:mike .
 
 # run the local image
-docker container run --name go-mike --rm -i -t -p 5000:5000 cdwuk/go:mike
+docker container run --name go-mike --rm -i -t -p 8081:8080 cdwuk/go:mike
 
 # run in cli
 curl localhost:5001
 
 # run in browser
-http://localhost:5001
+http://localhost:8081
 
 docker ps
 

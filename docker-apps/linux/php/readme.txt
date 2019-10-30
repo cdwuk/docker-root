@@ -24,3 +24,9 @@ docker login --username cdwuk
 docker push cdwuk/php-app:v1.0.0
 
 docker push cdwuk/php-app:latest
+
+
+#login to azure container registry
+docker login <myregistry>.azurecr.io
+
+docker push <myregistry.azurecr.io>/samples/php-app:latest

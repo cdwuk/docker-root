@@ -28,3 +28,8 @@ docker login --username cdwuk
 # push the image to docker hub
 docker push go-mike
 
+#login to azure container registry
+docker login <myregistry>.azurecr.io
+
+docker push <myregistry.azurecr.io>/samples/go-mike
+

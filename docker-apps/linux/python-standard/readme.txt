@@ -26,7 +26,15 @@ docker rmi $(docker images -q)
 #login to docker hub
 docker login --username cdwuk
 
+#login to azure container registry
+docker login <myregistry>.azurecr.io
+
 # push the image to docker hub
 docker push cdwuk/python-standard:v1.0.0
+
+docker push <myregistry.azurecr.io>/samples/nginx
+
+# login to azure container registry
+az acr login --name <myregistry>
 
 kubectl create -f deploy.yaml

@@ -1,0 +1,37 @@
+# k8smanifest.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-standard-deployment
+  labels:
+    app: python-standard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-standard
+  template:
+    metadata:
+      labels:
+        app: python-standard
+    spec:
+      containers:
+      - name: python-standard
+        image: cdwuk/python-standard:v1.0.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-standard-internal
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet"
+spec:
+  type: LoadBalancer
+  #   loadBalancerIP: 10.240.0.25
+  ports:
+  - port: 80
+  selector:
+    app: python-standard

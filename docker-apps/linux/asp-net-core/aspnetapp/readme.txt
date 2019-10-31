@@ -1,4 +1,9 @@
+# This exercise shows how to containerise a very simple bit of code that runs in ASP.NET Core. 
 
+# ** Important - VS code folder on LHS must be set to ASPNETAPP and set your name in the image below!!! ******************
+
+
+# open a new terminal and paste
 docker image build -t cdwuk/aspnetapp:v3 .
 
 docker run -it --rm -p 5014:80 --name aspnetapp cdwuk/aspnetapp:v3

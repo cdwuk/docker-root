@@ -3,7 +3,7 @@
 
 # ************  Set your name in the image!!!
 
-# create the local image
+# create the local image which is stored on your laptop 
 docker image build -t cdwuk/php-app:my-name-here .
 
 # add additional tags to the same image by rebuilding image
@@ -29,8 +29,21 @@ docker push cdwuk/php-app:v1.0.0
 
 docker push cdwuk/php-app:latest
 
+# ========== Azure Container Registry and Kubernetes below ============
 
 #login to azure container registry
 docker login <myregistry>.azurecr.io
 
-docker push <myregistry.azurecr.io>/samples/php-app:latest
+docker push <myregistry>.azurecr.io/cdwuk/php-app:latest
+
+# deploy to Kubernetes using YAML file
+kubectl create -f deploy.yaml
+
+# ============================================
+
+# Delete all containers
+docker rm $(docker ps -a -q)
+
+# Delete all images
+docker rmi $(docker images -q)
+

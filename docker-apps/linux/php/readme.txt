@@ -1,9 +1,10 @@
 
-# This exercise shows how to containerise a very simple PHP football web application. 
+# This exercise shows how to containerise a very simple PHP Apache football web application. 
 
-# ************  Set your name in the image!!!
+# ** Important - VS code folder on LHS must be set to PHP and set your name in the image below!!! ******************
 
-# create the local image which is stored on your laptop 
+# create the local image by opening a new terminal and paste in below . cdwuk refers to the repository, php-app refers to the application and my-name-here is the tag for this application. 
+# the dot refers to the current directory
 docker image build -t cdwuk/php-app:my-name-here .
 
 # add additional tags to the same image by rebuilding image
@@ -12,22 +13,17 @@ docker build -t cdwuk/php-app -t cdwuk/php-app:liverpool -t cdwuk/php-app:latest
 # run the local image
 docker run -it --rm  --name php-app -p 5002:80 cdwuk/php-app:liverpool
 
-docker ps
-
-curl localhost:5002
-
 # run in browser
 http://localhost:5002
 
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/cdwuk/php-app:v1.0.0
 
 #login to docker hub
 docker login --username cdwuk
 
 # push the image to docker hub
-docker push cdwuk/php-app:v1.0.0
+docker push cdwuk/php-app:my-name-here
 
-docker push cdwuk/php-app:latest
+# why does it take so very little time to upload to DockerHub?
 
 # ========== Azure Container Registry and Kubernetes below ============
 

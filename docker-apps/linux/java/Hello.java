@@ -1,5 +1,5 @@
 class Hello {  
     public static void main(String[] args){  
-        System.out.println("This is the simplest java app I could think of.");  
+        System.out.println("\n\n\n\nThis\n is\n the\n simplest\n java\n app\n I\n could\n think\n of.\n\n\n\");  
     }    
 } 

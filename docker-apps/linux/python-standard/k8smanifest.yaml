@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-standard-deployment
+  name: python-standard-deployment-1
   labels:
     app: python-standard
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-standard
+      app: python-standard-replicaset
   template:
     metadata:
       labels:
         app: python-standard
     spec:
       containers:
-      - name: python-standard
+      - name: python-standard-container-1
         image: cdwuk/python-standard:v1.0.0
         ports:
         - containerPort: 80
@@ -24,14 +24,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-standard-internal
+  name: python-standard-service-1
   annotations:
-    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-internal: "false"
     # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet"
 spec:
   type: LoadBalancer
-  #   loadBalancerIP: 10.240.0.25
+  # loadBalancerIP: 10.240.0.25
   ports:
   - port: 80
   selector:
-    app: python-standard
+    app: python-standard-container-1

@@ -34,7 +34,16 @@ docker push cdwuk/python-standard:v1.0.0
 
 # *********** congratulations!!  - you now know how to containerise a Pthon web app application.
 
-# ========== Azure Container Registry and Kubernetes below ============
+# Delete all containers
+docker rm $(docker ps -a -q)
+
+# Delete all images
+docker rmi $(docker images -q)
+
+# ==========Kubernetes============
+kubectl apply -f k8smanifest.yaml
+
+# ========== Azure Container Registry below ============
 
 #login to azure container registry
 docker login acr00000z.azurecr.io
@@ -45,10 +54,5 @@ docker login acr00000z.azurecr.io -u appId -p yourpassword
 az login
 az acr login --name acr00000z.azurecr.io
 
-kubectl apply -f deploy.yaml
 
-# Delete all containers
-docker rm $(docker ps -a -q)
 
-# Delete all images
-docker rmi $(docker images -q)

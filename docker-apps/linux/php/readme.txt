@@ -1,8 +1,12 @@
 
-# create the local image
-docker image build -t cdwuk/php-app:v1.0.0 .
+# This exercise shows how to containerise a very simple PHP football web application. 
 
-# add additional tags to the same image
+# ************  Set your name in the image!!!
+
+# create the local image
+docker image build -t cdwuk/php-app:my-name-here .
+
+# add additional tags to the same image by rebuilding image
 docker build -t cdwuk/php-app -t cdwuk/php-app:liverpool -t cdwuk/php-app:latest .
 
 # run the local image

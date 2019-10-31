@@ -1,24 +1,25 @@
+# This exercise shows how to containerise a very simple bit of code that runs in Ubuntu Linux. 
+
+# ************  Set your name in the image!!! ******************
+
 # prepare to build image
 cd <this directory that contains Dockerfile>
 
-# create the local copy of image
-docker image build -t cdwuk/ubuntu-test .
+# have a look at the Dockerfile and try and understand what it is doing
 
-# run the local image
-docker container run --name ubuntu-test --rm -i -t cdwuk/ubuntu-test
+# create the local image
+docker image build -t cdwuk/ubuntu-test:my-name-here .
+
+# run the local image in a container hosted in a Linux VM hosted on your laptop
+docker container run --name ubuntu-container --rm -i -t cdwuk/ubuntu-test:my-name-here
 
 # show all containers running or not
 docker ps -a
 
-## show logs for this container
-docker logs -f ubuntu-test 
+docker stop ubuntu-container 
 
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/ubuntu-test
-
-docker stop ubuntu-test 
-
-#login to docker hub
+#login to DockerHub using password: Qwerty===1
 docker login --username cdwuk
 
 # push the image to docker hub
-docker push cdwuk/ubuntu-test
+docker push cdwuk/ubuntu-test:my-name-here

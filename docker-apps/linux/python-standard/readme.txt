@@ -1,9 +1,11 @@
 
 # This exercise shows how to containerise a very simple Python web application. 
 
-# ************  Set your name in the image!!!
+# ** Important - VS code folder on LHS must be set to PYTHON-STANDARD and set your name in the image below!!! ******************
 
-# create the local image which is stored on your laptop 
+# open the Dockerfile on LHS and try to work out what is does
+
+# create the local image. cdwuk refers to the repository, python-standard refers to the application and my-name-here is the tag for this application 
 docker image build -t cdwuk/python-standard:my-name-here .
 
 # add 3 additional tags to the same image by rebuilding image. Note we add a version.
@@ -18,11 +20,10 @@ curl localhost:5001
 # run in browser
 http://localhost:5001
 
+# open a new terminal window and run docker ps
 docker ps
 
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/python-standard:my-name-here
-
-docker stop python-web-app
+# use CTL -c to stop the container
 
 #login to DockerHub using password: Qwerty===1
 docker login --username cdwuk
@@ -30,7 +31,7 @@ docker login --username cdwuk
 # push the image to DockerHub - make sure you have built this image with the tag specified below
 docker push cdwuk/python-standard:v1.0.0
 
-# *********** congratulations!!  - you now know how to containerise an application.
+# *********** congratulations!!  - you now know how to containerise a Pthon web app application.
 
 # ========== Azure Container Registry and Kubernetes below ============
 

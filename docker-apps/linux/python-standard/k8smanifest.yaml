@@ -26,8 +26,8 @@ kind: Service
 metadata:
   name: python-standard-service-1
   annotations:
-    service.beta.kubernetes.io/azure-load-balancer-internal: "false"
-    # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet"
+    service.beta.kubernetes.io/azure-load-balancer-internal: "false" # set to true for public IP
+    # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet" # specify subnet
 spec:
   type: LoadBalancer
   # loadBalancerIP: 10.240.0.25

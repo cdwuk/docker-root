@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  wingtiptoys:
+  webforms:
     ports:
       - "80"
 networks:

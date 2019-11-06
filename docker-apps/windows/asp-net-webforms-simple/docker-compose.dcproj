@@ -6,7 +6,7 @@
     <ProjectGuid>2ccf1b42-0a27-4933-8608-af6c83ae958c</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>http://{ServiceIPAddress}</DockerServiceUrl>
-    <DockerServiceName>wingtiptoys</DockerServiceName>
+    <DockerServiceName>webforms</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

@@ -29,7 +29,9 @@ namespace WingtipToys
 
         void Application_Error(object sender, EventArgs e)
         {
-          throw Server.GetLastError();
+            var ex = Server.GetLastError();
+
+            throw ex;
         }
     }
 }

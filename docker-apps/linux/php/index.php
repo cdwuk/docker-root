@@ -8,7 +8,7 @@
 
 <body>
   <h1>
-  <?php echo "PHP website running in docker Container for CDW"; ?>
+  <?php echo "My name here - PHP website running in docker Container for CDW"; ?>
   </h1>
 
   <img src="images/cdw.png" />

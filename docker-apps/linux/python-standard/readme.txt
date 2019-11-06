@@ -1,9 +1,11 @@
 
 # This exercise shows how to containerise a very simple Python web application. 
 
-# ** Important - VS code folder on LHS must be set to PYTHON-STANDARD and set your name in the image below!!! ******************
+# ********** Important - VS code folder on LHS must be set to PYTHON-STANDARD and set your name in the app.py and image below!!! *******
 
 # open the Dockerfile on LHS and try to work out what is does
+
+# open app.py and overwrite you name - save file
 
 # create the local image. cdwuk refers to the repository, python-standard refers to the application and my-name-here is the tag for this application 
 docker image build -t cdwuk/python-standard:my-name-here .

@@ -4,5 +4,5 @@ services:
   wingtiptoys:
     image: webformsbasic
     build:
-      context: .\webformsbasic
+      context: ..\webformsbasic
       dockerfile: Dockerfile

@@ -4,12 +4,7 @@
 
 
 # open a new terminal and paste
-
-dotnet publish -c Release
-
-# docker image build -t cdwuk/webforms:my-name-here -f ./aspnetapp/Dockerfile . 
-
-docker image build -t cdwuk/webforms:my-name-here . 
+docker image build -t cdwuk/webforms:my-name-here -f ./webformsbasic/Dockerfile . 
 
 docker run -it --rm -p 5014:80 --name aspnetapp cdwuk/aspnetapp:v3
 

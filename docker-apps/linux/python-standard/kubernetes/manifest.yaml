@@ -3,24 +3,26 @@
 # author: Nigel Wardle
 # created: 05/11/19
 # modified 05/11/19 
+# *******************************************
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-standard-deployment-1
+  name: python-standard
   labels:
     app: python-standard
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-standard-replicaset
+      app: python-standard
   template:
     metadata:
       labels:
         app: python-standard
     spec:
       containers:
-      - name: python-standard-container-1
+      - name: python-standard
         image: cdwuk/python-standard:v1.0.0
         resources: 
           requests:
@@ -35,7 +37,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-standard-service-1
+  name: python-standard
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "false" # set to true for public IP
     # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet" # specify subnet
@@ -45,4 +47,4 @@ spec:
   ports:
   - port: 80
   selector:
-    app: python-standard-container-1
+    app: python-standard

@@ -1,44 +1,43 @@
-# name: python-kube-manifest.yaml
+# name: go-kube-manifest.yaml
 # description: deploys application into sandbox namespace and exposes on an Azure internal load balancer
 # author: Nigel Wardle
 # created: 05/11/19
 # modified 05/11/19 
 # *******************************************
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python
+  name: go
   labels:
-    app: python
+    app: go
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: python
+      app: go
   template:
     metadata:
       labels:
-        app: python
+        app: go
     spec:
       containers:
-      - name: python
-        image: cdwuk/python-standard:v1.0.0
-        resources: 
-#          requests:
-#            memory: "2000Mi"
-#            cpu: "2000m"
-#            limits:
-#            memory: "2500Mi"
-#            cpu: "2500m"
+      - name: go
+        image: cdwuk/go-app:latest
+#        resources: 
+ #       requests:
+ #        memory: "2000Mi"
+ #        cpu: "2000m"
+ #      limits:
+ #       memory: "2500Mi"
+ #      cpu: "2500m"
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 ---
 # expose pods to service on public IP
 apiVersion: v1
 kind: Service
 metadata:
-  name: python
+  name: go
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "false" # set to true for public IP
     # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet" # specify subnet
@@ -47,4 +46,4 @@ spec:
   ports:
   - port: 80
   selector:
-    app: python
+    app: go

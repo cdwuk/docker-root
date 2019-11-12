@@ -33,3 +33,5 @@ docker login <myregistry>.azurecr.io
 
 docker push <myregistry.azurecr.io>/samples/go-mike
 
+kubectl apply -f go-kube-manifest.yaml
+

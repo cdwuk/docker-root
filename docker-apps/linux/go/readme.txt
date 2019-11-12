@@ -1,8 +1,8 @@
 # create the local image
-docker image build -t cdwuk/go:mike .
+docker image build -t cdwuk/go:latest .
 
 # run the local image
-docker container run --name go-mike --rm -i -t -p 8081:8080 cdwuk/go:mike
+docker container run --name go --rm -i -t -p 8081:8080 cdwuk/go:latest
 
 # run in cli
 curl localhost:5001
@@ -12,21 +12,13 @@ http://localhost:8081
 
 docker ps
 
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/python-standard:v1.0.0docker
-
-docker stop go-mike
-
-# Delete all containers
-docker rm $(docker ps -a -q)
-
-# Delete all images
-docker rmi $(docker images -q)
+docker stop go
 
 #login to docker hub
 docker login --username cdwuk
 
 # push the image to docker hub
-docker push go-mike
+docker push cdwuk/go:latest
 
 #login to azure container registry
 docker login <myregistry>.azurecr.io

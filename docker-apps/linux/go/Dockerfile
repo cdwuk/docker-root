@@ -23,7 +23,7 @@ FROM scratch AS final
 COPY --from=build /app /app
 
 # expose port 8080
-EXPOSE 8080
+EXPOSE 80
 
 # run binary
 ENTRYPOINT ["/app"]

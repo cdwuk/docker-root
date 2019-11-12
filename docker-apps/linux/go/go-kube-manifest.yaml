@@ -22,16 +22,9 @@ spec:
     spec:
       containers:
       - name: go
-        image: cdwuk/go-app:latest
-#        resources: 
- #       requests:
- #        memory: "2000Mi"
- #        cpu: "2000m"
- #      limits:
- #       memory: "2500Mi"
- #      cpu: "2500m"
+        image: cdwuk/go:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 ---
 # expose pods to service on public IP
 apiVersion: v1
@@ -45,5 +38,7 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
+    targetPort: 80
   selector:
     app: go
+  sessionAffinity: ClientIP

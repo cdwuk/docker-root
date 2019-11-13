@@ -34,7 +34,13 @@ docker login --username cdwuk
 
 docker push cdwuk/python-standard:v1.0.0
 
-# *********** congratulations!!  - you now know how to containerise a Pthon web app application.
+# *********** congratulations!!  - you now know how to containerise a Pthon web app application. ****************
+
+# list all running containers
+docker container ls -aq
+
+# Stop all containers
+docker container stop $(docker container ls -aq)
 
 # Delete all containers
 docker rm $(docker ps -a -q)
@@ -43,7 +49,9 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 
 # ==========Kubernetes============
-kubectl apply -f k8smanifest.yaml
+kubectl apply -f python-kube-manifest.yaml
+
+
 
 # ========== Azure Container Registry below ============
 

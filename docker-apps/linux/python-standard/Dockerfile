@@ -5,5 +5,6 @@ ADD . /app/
 COPY . .
 RUN pip install -r requirements.txt
 # RUN pip install --upgrade pip
-CMD ["python", "app.py", "-p 80"]
+EXPOSE 5000
+CMD ["python", "app.py"]
  

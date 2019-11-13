@@ -32,7 +32,7 @@ spec:
 #            memory: "2500Mi"
 #            cpu: "2500m"
         ports:
-        - containerPort: 80
+        - containerPort: 5000
 ---
 # expose pods to service on public IP
 apiVersion: v1
@@ -46,7 +46,7 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 5000
   selector:
     app: python
   sessionAffinity: ClientIP

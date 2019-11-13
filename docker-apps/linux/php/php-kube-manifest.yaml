@@ -23,6 +23,7 @@ spec:
       containers:
       - name: php
         image: cdwuk/php-app:latest
+        imagePullPolicy: Always
 #        resources: 
 #         requests:
 #          memory: "2000Mi"

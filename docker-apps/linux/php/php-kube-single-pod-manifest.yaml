@@ -6,4 +6,5 @@ spec:
   containers:
   - name: php
     image: cdwuk/php-app:latest
+    imagePullPolicy: Always
 

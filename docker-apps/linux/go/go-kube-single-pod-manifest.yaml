@@ -6,4 +6,5 @@ spec:
   containers:
   - name: go
     image: cdwuk/go:latest
+    imagePullPolicy: Always
 

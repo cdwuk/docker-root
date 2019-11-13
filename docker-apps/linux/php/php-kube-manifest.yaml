@@ -1,5 +1,5 @@
-# name: k8smanifest.yaml
-# description: deploys application into sandbox namespace and exposes on an Azure internal load balancer
+# name: php-kube-manifest.yaml
+# description: deploys application into sandbox namespace and exposes via a Kubernetes service
 # author: Nigel Wardle
 # created: 05/11/19
 # modified 05/11/19 
@@ -24,12 +24,12 @@ spec:
       - name: php
         image: cdwuk/php-app:latest
 #        resources: 
- #         requests:
- #          memory: "2000Mi"
- #         cpu: "2000m"
- #      limits:
- #       memory: "2500Mi"
- #      cpu: "2500m"
+#         requests:
+#          memory: "2000Mi"
+#          cpu: "2000m"
+#         limits:
+#          memory: "2500Mi"
+#          cpu: "2500m"
         ports:
         - containerPort: 80
 ---

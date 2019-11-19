@@ -49,9 +49,11 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 
 # ==========Kubernetes============
+# deploy nginx web server to you kubernetes cluster
+kubectl run  –n nginx --image=nginx  
+kubectl expose deployment nginx --name=nginx
+
 kubectl apply -f python-kube-manifest.yaml
-
-
 
 # ========== Azure Container Registry below ============
 

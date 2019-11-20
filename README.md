@@ -1,7 +1,7 @@
 # docker-root
 Applications and code to support migrations to containers  
 
-Prerequisites
+============= Prerequisites
 
 Download and install Git  
 
@@ -9,18 +9,25 @@ Download and install VS Code
 
 Download and install Docker Desktop  
 
-Double click on fve.reg  
-
-A possible rebot may be beneficial.  
-
-
+=========== Test working
 run a command prompt as admin and type:
 git version  
 
 docker version 
 
+Double click on fve.reg  
 
-to speed things up run:
+A possible rebot may be beneficial. 
+
+============ clone code to local machine
+
+create a new folder c:\
+
+using Windows explorer navigate to this folder a right click for a Bash Git command
+git clone https://github.com/cdwuk/docker-root or
+git pull origin master
+
+=========== optionally to speed things up run:
 
 docker pull ubuntu  
 

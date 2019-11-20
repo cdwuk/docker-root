@@ -48,23 +48,41 @@ docker rm $(docker ps -a -q)
 # Delete all images
 docker rmi $(docker images -q)
 
-# ==========Kubernetes============
-# deploy nginx web server to you kubernetes cluster
+
+# ==========Kubernetes ======== you will need an Azure subscription to do this ===================
+# create resource group
+az group create -l westeurope -n myrg
+
+# create AKS cluster
+az aks create -g myrg -n aksz99
+
+# download credentials into local file
+az aks get-credentials --name aksz99 --resource-group aksz99rg
+
+#test that credentials work ok
+kubectl get all
+
+# deploy nginx web server image from Docker Hub to your kubernetes cluster
 kubectl run  –n nginx --image=nginx  
 kubectl expose deployment nginx --name=nginx
 
+# deploy python app to your kubernetes using the YAML file
 kubectl apply -f python-kube-manifest.yaml
 
 # ========== Azure Container Registry below ============
-
-#login to azure container registry
-docker login acr00000z.azurecr.io
-
-docker login acr00000z.azurecr.io -u appId -p yourpassword
+# create an Azure Container Registry
+az acr create -n acrz99 -g myrg --sku Standard
 
 # login to azure and then to Azure Container Registry
 az login
 az acr login --name acr00000z.azurecr.io
+
+#login to azure container registry
+docker login acrz99.azurecr.io
+
+docker login acr00000z.azurecr.io -u appId -p yourpassword
+
+
 
 
 

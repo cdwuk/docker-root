@@ -67,8 +67,16 @@ kubectl get all
 kubectl run  –n nginx --image=nginx  
 kubectl expose deployment nginx --name=nginx
 
+# now determine IP address of nginx server
+kubectl get all -o wide
+
+# access web server in browser
+http://ip-address
+
 # deploy python app to your kubernetes using the YAML file
 kubectl apply -f python-kube-manifest.yaml
+
+kubectl get all -o wide
 
 # ========== Azure Container Registry below ============
 # create an Azure Container Registry

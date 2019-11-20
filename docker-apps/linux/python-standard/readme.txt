@@ -34,7 +34,7 @@ docker login --username cdwuk
 
 docker push cdwuk/python-standard:v1.0.0
 
-# *********** congratulations!!  - you now know how to containerise a Pthon web app application. ****************
+# *********** CONGRATULATIONS - you now know how to containerise a PYthon web app application. ****************
 
 # list all running containers
 docker container ls -aq
@@ -48,16 +48,17 @@ docker rm $(docker ps -a -q)
 # Delete all images
 docker rmi $(docker images -q)
 
-
 # ==========Kubernetes ======== you will need an Azure subscription to do this ===================
-# create resource group
+# You are now going to use the Azure 'az' command to perform tasks in Azure
+
+# create a new resource group in your Azure subscription 
 az group create -l westeurope -n myrg
 
-# create AKS cluster
-az aks create -g myrg -n aksz99
+# create AKS cluster using your unique name
+az aks create -g myrg -n aks-my-name
 
 # download credentials into local file
-az aks get-credentials --name aksz99 --resource-group aksz99rg
+az aks get-credentials --name aks-my-name --resource-group myrg
 
 #test that credentials work ok
 kubectl get all
@@ -71,17 +72,13 @@ kubectl apply -f python-kube-manifest.yaml
 
 # ========== Azure Container Registry below ============
 # create an Azure Container Registry
-az acr create -n acrz99 -g myrg --sku Standard
+az acr create -n acr-my-name -g myrg --sku Standard
 
 # login to azure and then to Azure Container Registry
 az login
-az acr login --name acr00000z.azurecr.io
+az acr login --name acr-my-name.azurecr.io
 
-#login to azure container registry
-docker login acrz99.azurecr.io
-
-docker login acr00000z.azurecr.io -u appId -p yourpassword
-
+docker push acr-my-name.azurecr.io/samples/python-standard:v1.0.0
 
 
 

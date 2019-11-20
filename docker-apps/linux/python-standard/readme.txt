@@ -1,5 +1,5 @@
 
-# This exercise shows how to containerise a very simple Python web application. 
+# ================PART 1: This exercise shows how to containerise a very simple Python web application. 
 
 # ********** Important - VS code folder on LHS must be set to PYTHON-STANDARD and set your name in the app.py and image below!!! *******
 
@@ -27,6 +27,8 @@ docker ps
 
 # use CTL -c to stop the container
 
+# ============== PART 2 -- push image to Docker Hub
+
 #login to DockerHub using password: Qwerty===1
 docker login --username cdwuk
 
@@ -48,7 +50,7 @@ docker rm $(docker ps -a -q)
 # Delete all images
 docker rmi $(docker images -q)
 
-# ==========Kubernetes ======== you will need an Azure subscription to do this ===================
+# ============== PART 3 Kubernetes ======== you will need an Azure subscription to do this ===================
 # You are now going to use the Azure 'az' command to perform tasks in Azure
 
 # create a new resource group in your Azure subscription 
@@ -78,7 +80,7 @@ kubectl apply -f python-kube-manifest.yaml
 
 kubectl get all -o wide
 
-# ========== Azure Container Registry below ============
+# ==============PART 4 Azure Container Registry ============
 # create an Azure Container Registry
 az acr create -n acr-my-name -g myrg --sku Standard
 

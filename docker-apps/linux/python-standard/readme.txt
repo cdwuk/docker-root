@@ -25,6 +25,9 @@ http://localhost:5001
 # open a new terminal window and run docker ps
 docker ps
 
+# open a new terminal window AND list all running containers
+docker container ls -aq
+
 # use CTL -c to stop the container
 
 # ============== PART 2 -- push image to Docker Hub
@@ -38,17 +41,6 @@ docker push cdwuk/python-standard:v1.0.0
 
 # *********** CONGRATULATIONS - you now know how to containerise a PYthon web app application. ****************
 
-# list all running containers
-docker container ls -aq
-
-# Stop all containers
-docker container stop $(docker container ls -aq)
-
-# Delete all containers
-docker rm $(docker ps -a -q)
-
-# Delete all images
-docker rmi $(docker images -q)
 
 # ============== PART 3 Kubernetes ======== you will need an Azure subscription to do this ===================
 # You are now going to use the Azure 'az' command to perform tasks in Azure
@@ -80,7 +72,7 @@ kubectl apply -f python-kube-manifest.yaml
 
 kubectl get all -o wide
 
-# ==============PART 4 Azure Container Registry ============
+# ==============   PART 4 Azure Container Registry ============
 # create an Azure Container Registry
 az acr create -n acr-my-name -g myrg --sku Standard
 
@@ -90,6 +82,15 @@ az acr login --name acr-my-name.azurecr.io
 
 docker push acr-my-name.azurecr.io/samples/python-standard:v1.0.0
 
+==========================
 
+# Stop all containers
+docker container stop $(docker container ls -aq)
+
+# Delete all containers
+docker rm $(docker ps -a -q)
+
+# Delete all images
+docker rmi $(docker images -q)
 
 

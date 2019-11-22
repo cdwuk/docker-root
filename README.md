@@ -9,18 +9,18 @@ Download and install VS Code
 
 Download and install Docker Desktop  
 
-Double click on fve.reg  
+Double click on fve.reg to allow you to switch between running Linux and Windows containers
 
 A possible rebot may be beneficial.  
 
-
 run a command prompt as admin and type:
+
 git version  
 
 docker version 
 
 
-to speed things up run:
+to download base images (on wifi) to speed things up in Docker, open a terminal in VS Code or command prompt and run:
 
 docker pull ubuntu  
 
@@ -37,6 +37,8 @@ docker pull mcr.microsoft.com/dotnet/core/aspnet:3.0
 docker pull mcr.microsoft.com/dotnet/core/sdk:3.0  
 
 docker pull microsoft/aspnet:4.7.2-windowsservercore-1803  
+
+Part 1- File-Open Folder and select the Ubuntu folder and then open the readme
 
 
 

@@ -1,5 +1,5 @@
 
-# This exercise shows how to containerise a very simple Python web application. 
+# ================PART 1: This exercise shows how to containerise a very simple Python web application. 
 
 # ********** Important - VS code folder on LHS must be set to PYTHON-STANDARD and set your name in the app.py and image below!!! *******
 
@@ -25,7 +25,12 @@ http://localhost:5001
 # open a new terminal window and run docker ps
 docker ps
 
+# open a new terminal window AND list all running containers
+docker container ls -aq
+
 # use CTL -c to stop the container
+
+# ============== PART 2 -- push image to Docker Hub
 
 #login to DockerHub using password: Qwerty===1
 docker login --username cdwuk
@@ -34,10 +39,50 @@ docker login --username cdwuk
 
 docker push cdwuk/python-standard:v1.0.0
 
-# *********** congratulations!!  - you now know how to containerise a Pthon web app application. ****************
+# *********** CONGRATULATIONS - you now know how to containerise a PYthon web app application. ****************
 
-# list all running containers
-docker container ls -aq
+
+# ============== PART 3 Kubernetes ======== you will need an Azure subscription to do this ===================
+# You are now going to use the Azure 'az' command to perform tasks in Azure
+
+# create a new resource group in your Azure subscription 
+az group create -l westeurope -n myrg
+
+# create AKS cluster using your unique name
+az aks create -g myrg -n aks-my-name
+
+# download credentials into local file
+az aks get-credentials --name aks-my-name --resource-group myrg
+
+#test that credentials work ok
+kubectl get all
+
+# deploy nginx web server image from Docker Hub to your kubernetes cluster
+kubectl run  –n nginx --image=nginx  
+kubectl expose deployment nginx --name=nginx
+
+# now determine IP address of nginx server
+kubectl get all -o wide
+
+# access web server in browser
+http://ip-address
+
+# deploy python app to your kubernetes using the YAML file
+kubectl apply -f python-kube-manifest.yaml
+
+kubectl get all -o wide
+
+# ==============   PART 4 Azure Container Registry ============
+# create an Azure Container Registry
+az acr create -n acr-my-name -g myrg --sku Standard
+
+# login to azure and then to Azure Container Registry
+az login
+az acr login --name acr-my-name.azurecr.io
+
+docker push acr-my-name.azurecr.io/samples/python-standard:v1.0.0
+
+==========================
 
 # Stop all containers
 docker container stop $(docker container ls -aq)
@@ -47,22 +92,5 @@ docker rm $(docker ps -a -q)
 
 # Delete all images
 docker rmi $(docker images -q)
-
-# ==========Kubernetes============
-kubectl apply -f python-kube-manifest.yaml
-
-
-
-# ========== Azure Container Registry below ============
-
-#login to azure container registry
-docker login acr00000z.azurecr.io
-
-docker login acr00000z.azurecr.io -u appId -p yourpassword
-
-# login to azure and then to Azure Container Registry
-az login
-az acr login --name acr00000z.azurecr.io
-
 
 

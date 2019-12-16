@@ -6,7 +6,7 @@
 # open a new terminal and paste
 docker image build -t cdwuk/aspnetapp:v3 -f ./aspnetapp/Dockerfile . 
 
-docker run -it --rm -p 5014:80 --name aspnetapp cdwuk/aspnetapp:v3
+docker run -it --rm -p 80:8080 --name aspnetapp cdwuk/aspnetapp:v3
 
 docker stop aspnetapp
 

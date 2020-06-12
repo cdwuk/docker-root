@@ -68,10 +68,10 @@ docker push cdwuk/python-standard:latest
 az group create -l westeurope -n myrg
 
 # create AKS cluster using your *** unique name **
-az aks create -g myrg -n aks-my-name
+az aks create -g myrg -n aks-zzz
 
 # download credentials into local file
-az aks get-credentials --name aks-my-name --resource-group myrg
+az aks get-credentials --name aks-zzz --resource-group myrg
 
 #test that credentials work ok
 kubectl get all
@@ -90,22 +90,23 @@ http://<ip-address>
 
 cdwuk/python-standard:v1.0.0
 
+# deploy python in a pod in kubernetes
 kubectl run  python --image=cdwuk/python-standard:latest  
+
+# add a load balancer service on a public IP
 kubectl expose deployment python --type=LoadBalancer --name=python --port=80 --target-port=5000
 
-# now determine IP address of nginx server
+# now determine public IP address of python service
 kubectl get all -o wide
 
 # access python web server in browser
 http://<ip-address>
-
 
 # alternatively deploy python app to your kubernetes using the supplied YAML file
 # in the Azure CLI - upload python-kube-manifest.yaml
 kubectl apply -f python-kube-manifest.yaml
 
 kubectl get all -o wide
-
 
 # ==============   PART 5 Azure Container Registry ============
 # create an Azure Container Registry

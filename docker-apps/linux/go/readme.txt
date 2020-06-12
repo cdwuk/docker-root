@@ -14,7 +14,7 @@ docker ps
 
 docker stop go
 
-#login to docker hub
+#login to DockerHub using password: Qwerty===1
 docker login --username cdwuk
 
 # push the image to docker hub

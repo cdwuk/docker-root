@@ -17,7 +17,7 @@ http://localhost:5014
 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" cdwuk/aspnetapp:v3
 
-#login to docker hub
+#login to DockerHub using password: Qwerty===1
 docker login --username cdwuk
 
 # push the image to docker hub

@@ -1,12 +1,12 @@
 # This exercise shows how to containerise a very simple bit of code that runs in ASP.NET Core. 
 
-# ** Important - VS code folder on LHS must be set to ASP-NET-CORE and set your name in the image below!!! ******************
+# ** Important - VS code folder on LHS must be set to WebformsBasic and set your name in the image below!!! ******************
 
 
 # open a new terminal and paste
 docker image build -t cdwuk/webforms:my-name-here -f ./webformsbasic/Dockerfile . 
 
-docker run -it --rm -p 5014:80 --name aspnetapp cdwuk/aspnetapp:v3
+docker run -it --rm -p 5014:80 --name aspnetapp cdwuk/webforms:my-name-here
 
 docker stop aspnetapp
 

@@ -36,7 +36,7 @@ docker login <myregistry>.azurecr.io
 docker push <myregistry>.azurecr.io/cdwuk/php-app:latest
 
 # deploy to Kubernetes using YAML file
-kubectl create -f deploy.yaml
+kubectl create -f php-k8s-manifest.yaml
 
 # ============================================
 

@@ -1,6 +1,6 @@
 # This exercise shows how to containerise a very simple bit of code that runs in ASP.NET Core. 
 
-# ** Important - VS code folder on LHS must be set to ASP-NET-CORE and set your name in the image below!!! ******************
+# ** Important - VS code folder on LHS must be set to webformsbasic and set your name in the image below!!! ******************
 
 
 # open a new terminal and paste

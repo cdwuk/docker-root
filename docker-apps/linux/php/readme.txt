@@ -24,7 +24,9 @@ http://localhost:5002
 docker login --username cdwuk
 
 # push the image to docker hub
+docker push cdwuk/php-app:latest
 docker push cdwuk/php-app:my-name-here
+docker push cdwuk/php-app:liverpool
 
 # why does it take so very little time to upload to DockerHub?
 

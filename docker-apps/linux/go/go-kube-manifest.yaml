@@ -7,11 +7,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go
+  name: go-backend
   labels:
     app: go
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: go
@@ -31,15 +31,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: go
+  name: go-backend
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "false" # set to true for public IP
     # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet" # specify subnet
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 80
   selector:
     app: go
-  sessionAffinity: ClientIP
+  #sessionAffinity: ClientIP

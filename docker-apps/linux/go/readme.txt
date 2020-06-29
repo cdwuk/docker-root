@@ -2,10 +2,10 @@
 docker image build -t cdwuk/go:latest .
 
 # run the local image
-docker container run --name go --rm -i -t -p 8081:8080 cdwuk/go:latest
+docker container run --name go --rm -i -t -p 8081:80 cdwuk/go:latest
 
 # run in cli
-curl localhost:5001
+curl localhost:8081
 
 # run in browser
 http://localhost:8081

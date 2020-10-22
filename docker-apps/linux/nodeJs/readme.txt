@@ -14,6 +14,7 @@ docker run -it --rm  --name nodejs -p 5013:8080 cdwuk/nodejs
 http://localhost:5013
 
 #login to docker hub
+#login to DockerHub using password: Qwerty===1
 docker login --username cdwuk
 
 # push the image to docker hub
